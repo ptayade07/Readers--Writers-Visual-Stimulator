@@ -1,63 +1,73 @@
-# 🧵 Readers–Writers Synchronization Visual Simulator
+📗 Readers–Writers Synchronization Simulator
+A high-fidelity, real-time visualization of the classic Readers-Writers Problem in operating systems. This simulator demonstrates thread synchronization, concurrency control, and semaphore-based locking mechanisms using a modern, dark-themed Python GUI.
 
-An interactive Operating Systems project that demonstrates the classic **Readers–Writers synchronization problem** using Python threading and semaphores, with a real-time GUI visualization built using Tkinter.
+🚀 Overview
+The Readers–Writers problem is a classic synchronization challenge where multiple threads (Readers and Writers) share a single resource. This application simulates the First Readers-Writers Problem, which prevents "reader starvation" by allowing multiple readers to access the data simultaneously while ensuring writers have exclusive access.
 
-This simulator visually represents concurrent reader and writer threads accessing shared data while maintaining proper synchronization and mutual exclusion.
+Features
+Real-time Thread Tracking: Watch Reader and Writer blocks change states dynamically as they acquire locks.
 
----
+Synchronized Visuals: Graphical connecting lines show the flow of data between shared memory and active threads.
 
-## 📌 Project Overview
+Detailed Activity Log: A live console tracking every lock acquisition, data update, and semaphore release.
 
-The Readers–Writers problem is a classic concurrency challenge in Operating Systems that deals with synchronizing access to a shared resource.
+Thread-Safe UI: Built using threading.Semaphore and thread-safe Tkinter callbacks to prevent race conditions during visualization.
 
-This project simulates:
+Modern Aesthetics: Styled with a "Sleek Dark" theme using a custom color palette.
 
-- Multiple reader threads
-- Multiple writer threads
-- Shared data access
-- Semaphore-based synchronization
-- Real-time activity logging
-- GUI-based visualization of concurrent execution
+🛠️ Tech Stack
+Language: Python 3.x
 
----
+Library: Tkinter (GUI), Threading (Concurrency)
 
-## 🎯 Objectives
+Synchronization: Semaphores (mutex and rw_mutex)
 
-- Demonstrate mutual exclusion using semaphores
-- Prevent race conditions
-- Allow multiple readers to read simultaneously
-- Ensure writers get exclusive access
-- Safely update GUI from background threads
+🧠 The Logic Behind the Simulation
+The simulator implements the standard semaphore-based solution:
 
----
+Readers:
 
-## 🛠️ Built With
+Can read simultaneously.
 
-- Python 3.x
-- Tkinter (GUI Framework)
-- Python `threading` module
-- Semaphore-based synchronization
+The first reader locks the shared resource (rw_mutex).
 
-No external libraries required.
+The last reader to finish releases the resource.
 
----
+Writers:
 
-## ⚙️ How It Works
+Require exclusive access.
 
-The implementation uses two semaphores:
+Must wait for all readers and other writers to finish before starting.
 
-- `mutex` → Protects access to `read_count`
-- `rw_mutex` → Controls access to shared data
+Mutex: Ensures the read_count variable is updated safely by only one reader at a time.
 
-### Synchronization Logic
+🚦 Getting Started
+Prerequisites
+Python installed on your machine.
 
-- Multiple readers can read at the same time.
-- Writers require exclusive access.
-- The first reader locks writers out.
-- The last reader releases writer access.
-- Writers block both readers and other writers while writing.
+The tkinter library (standard with most Python installations).
 
-Thread-safe UI updates are handled using:
+Installation & Execution
+Clone the repository:
 
-```python
-root.after()
+Bash
+git clone https://github.com/yourusername/readers-writers-simulator.git
+Navigate to the folder:
+
+Bash
+cd readers-writers-simulator
+Run the script:
+
+Bash
+python main.py
+📸 Interface Guide
+Central Circle: Represents the shared data (Critical Section).
+
+Top Blocks (Green): Represent Reader threads.
+
+Bottom Blocks (Red): Represent Writer threads.
+
+Right Panel: Contains the "Shared Data" counter, live system status, and a scrollable activity log.
+
+📄 License
+This project is open-source and available under the MIT License.
