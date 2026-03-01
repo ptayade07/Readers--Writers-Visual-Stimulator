@@ -48,7 +48,7 @@ Python installed on your machine.
 The tkinter library (standard with most Python installations).
 
 ##Bash
-git clone https://github.com/ptayade07/readers-writers-simulator.git
+git clone https://github.com/ptayade07/readers--writers-visual-simulator.git
 Navigate to the folder:
 
 ##Bash
